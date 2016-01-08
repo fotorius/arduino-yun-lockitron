@@ -1,6 +1,6 @@
 /*
   Lockitron
-  Simple Arduino Yún door access application usin Lockitron
+  Simple Arduino Yún door access application using Lockitron
 
   Documentation: https://github.com/devalfrz/arduino-yun-lockitron  
 
