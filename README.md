@@ -1,5 +1,5 @@
 # arduino-yun-lockitron
-Simple Arduino Yún door access application usin Lockitron
+Simple Arduino Yún door access application using Lockitron
 
 <img src="http://behuns.com/media/arduino-yun-lockitron/icon.png" alt="Lockitron Icon">
 
