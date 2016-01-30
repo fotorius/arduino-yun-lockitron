@@ -24,6 +24,8 @@ YunServer server;
 */
 const char password[] = "arduino";
 
+String response;
+int state = OPEN;
 
 
 const int buttonPin = 12;
@@ -36,7 +38,6 @@ const int motorB = 6;
 const int swA1 = 4;
 const int swA2 = 8;
 
-int locked = OPEN;
 
 int lock(int state){
       digitalWrite(boardLed, HIGH);
@@ -86,21 +87,23 @@ void loop() {
     String command = client.readString();
     command.trim();
     if (command == "status"){
-      client.print(locked);
+      response = String(state);
     }
     else if (command == "lock") {
-      locked = lock(CLOSE);
-      client.print(locked);
+      state = lock(CLOSE);
+      response = String(state);
     }
     else if (command == password) {
-      locked = lock(OPEN);
-      client.print(locked);
+      state = lock(OPEN);
+      response = String(state);
     }
     else{ // Error
-      client.print("2");
+      response = "2";
     }
+    client.print(String("{\"state\":"+response+"}"));
     client.stop();
   }
+
 
   if (digitalRead(buttonPin)) {
       /*
