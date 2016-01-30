@@ -63,24 +63,25 @@
         $.ajax({
           type: 'GET',
           url: '/arduino/'+s,
+          dataType: 'json',
           timeout: 15000,
           context: $('body'),
           success: function(data){
-            if(data == '1'){
+            if(data.state == 1){
               $('#lock').hide();
               $('#unlock').show();
               $('#password').show();
               $('#status #content').text('Locked');                              
               $('body').css('background-color','#337ab7');                        
               $('body').css('color','white');
-            }else if(data == '0'){
+            }else if(data.state == 0){
               $('#unlock').hide();
               $('#password').hide();
               $('#lock').show();
 	      $('#status #content').text('Unlocked');
               $('body').css('background-color','black');
               $('body').css('color','white');
-            }else if(data == '2'){
+            }else if(data.state == 2){
               $('#unlock').show();                                       
               $('#password').show();                                     
               $('#lock').hide();                                         
